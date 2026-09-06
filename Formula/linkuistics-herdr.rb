@@ -3,8 +3,8 @@ class LinkuisticsHerdr < Formula
   homepage "https://github.com/AntonyBlakey/herdr"
   url "https://github.com/AntonyBlakey/herdr.git",
       branch:   "linkuistics-fork",
-      revision: "085bcf89ce8fd49a7b6920da250e5abd59b03674"
-  version "0.7.5-linkuistics.3"
+      revision: "272964181c8431bdb80be04e283ef628eec20f15"
+  version "0.8.2-linkuistics.1"
   license "Apache-2.0"
 
   depends_on "rust" => :build
@@ -14,7 +14,7 @@ class LinkuisticsHerdr < Formula
     ENV["ZIG"] = formula_opt_bin("zig@0.15")/"zig"
     # herdr builds `--version` as {CARGO_PKG_VERSION}-{channel}.{build_id} from
     # these compile-time vars (src/build_info.rs). Without them `channel` falls
-    # back to "stable" and the binary reports a bare "0.7.5", indistinguishable
+    # back to "stable" and the binary reports the upstream version, indistinguishable
     # from an upstream build. Derived from `version` so the two cannot drift.
     ENV["HERDR_BUILD_CHANNEL"] = "linkuistics"
     ENV["HERDR_BUILD_ID"] = version.to_s.split("-linkuistics.").last
@@ -48,8 +48,7 @@ class LinkuisticsHerdr < Formula
                          pair recolour split-pane borders without restyling the
                          whole UI through the shared accent. `inactive_pane_haze`
                          blends unfocused panes toward a colour so the focused
-                         one stays obvious while typing; upstream's dim applies
-                         only outside Terminal mode. Both default to off and
+                         one stays obvious while typing. Both default to off and
                          reproduce upstream's appearance exactly. Ends only if
                          upstream makes pane appearance configurable to the same
                          degree.
